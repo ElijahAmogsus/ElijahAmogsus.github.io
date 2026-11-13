@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ElijahAmogsus | Dev Hub</title>
+  <style>
+    body {
+      background: #1e1e2e;
+      color: #cdd6f4;
+      font-family: monospace;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 20px;
+    }
+    h1 { color: #89b4fa; margin-bottom: 5px; }
+    p { color: #a6adc8; margin-bottom: 30px; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+      width: 100%;
+      max-width: 700px;
+    }
+    a.card {
+      background: #181825;
+      border: 2px solid #45475a;
+      border-radius: 8px;
+      padding: 20px;
+      text-decoration: none;
+      color: #cdd6f4;
+      transition: border-color 0.2s;
+    }
+    a.card:hover { border-color: #89b4fa; }
+    .card h3 { color: #f38ba8; margin: 0 0 8px 0; }
+    .card span { color: #a6adc8; font-size: 0.9em; }
+  </style>
+</head>
+<body>
+  <h1>⚡ ElijahAmogsus</h1>
+  <p>My custom tools, games & experiments</p>
+
+  <div class="grid">
+    <a class="card" href="/pixel-gradient/">
+      <h3>👾 Pixelated Gradient Maker</h3>
+      <span>Create & download up to 5-color retro pixel gradients.</span>
+    </a>
+
+    <a class="card" href="#">
+      <h3>🚧 Next Project Coming Soon</h3>
+      <span>Placeholder card for your next tool or mini-game.</span>
+    </a>
+  </div>
+</body>
+</html>
