@@ -126,54 +126,13 @@
       <span>Create & download up to 5-color 1080×1080 retro pixel gradients.</span>
     </a>
 
+    <a class="card" href="/color-picker/">
+      <h3>🎨 Color Picker</h3>
+      <span>Pick any color and instantly copy HEX, RGB, and HSL codes.</span>
+    </a>
+
     <a class="card" href="#">
       <h3>🚧 Next Project Coming Soon</h3>
       <span>Placeholder card for your next tool or mini-game.</span>
     </a>
   </div>
-
-  <script>
-    const themes = {
-      mocha: {
-        base: '#1e1e2e', mantle: '#181825', surface0: '#313244',
-        surface1: '#45475a', text: '#cdd6f4', subtext0: '#a6adc8',
-        blue: '#89b4fa', pink: '#f38ba8'
-      },
-      macchiato: {
-        base: '#24273a', mantle: '#1e2030', surface0: '#363a4f',
-        surface1: '#494d64', text: '#cad3f5', subtext0: '#a5adcb',
-        blue: '#8aadf4', pink: '#f5bde6'
-      },
-      frappe: {
-        base: '#303446', mantle: '#292c3c', surface0: '#414559',
-        surface1: '#51576d', text: '#c6d0f5', subtext0: '#a5adce',
-        blue: '#8caaee', pink: '#f4b8e4'
-      },
-      latte: {
-        base: '#eff1f5', mantle: '#e6e9ef', surface0: '#ccd0da',
-        surface1: '#bcc0cc', text: '#4c4f69', subtext0: '#6c6f85',
-        blue: '#1e66f5', pink: '#ea76cb'
-      }
-    };
-
-    function setTheme(name, btn) {
-      const palette = themes[name];
-      const root = document.documentElement.style;
-      for (const [key, value] of Object.entries(palette)) {
-        root.setProperty(`--${key}`, value);
-      }
-
-      document.querySelectorAll('.theme-btn').forEach(b => b.classList.remove('active'));
-      if (btn) btn.classList.add('active');
-      localStorage.setItem('catppuccin-theme', name);
-    }
-
-    // Load saved theme automatically
-    const saved = localStorage.getItem('catppuccin-theme');
-    if (saved && themes[saved]) {
-      const btn = document.querySelector(`button[onclick*="${saved}"]`); 
-      setTheme(saved, btn);
-    }
-  </script>
-</body>
-</html>
