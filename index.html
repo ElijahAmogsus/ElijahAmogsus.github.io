@@ -171,7 +171,7 @@
     // Load saved theme automatically
     const saved = localStorage.getItem('catppuccin-theme');
     if (saved && themes[saved]) {
-      const btn = document.querySelector(`button[onclick*="${saved}"]`);
+      const btn = document.querySelector(`button[onclick*="${saved}"]`); 
       setTheme(saved, btn);
     }
   </script>
