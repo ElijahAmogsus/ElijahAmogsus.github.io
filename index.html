@@ -4,46 +4,126 @@
   <meta charset="UTF-8">
   <title>ElijahAmogsus | Dev Hub</title>
   <style>
-    body {
-      background: #1e1e2e;
-      color: #cdd6f4;
+    :root {
+      --base: #1e1e2e;
+      --mantle: #181825;
+      --surface0: #313244;
+      --surface1: #45475a;
+      --text: #cdd6f4;
+      --subtext0: #a6adc8;
+      --blue: #89b4fa;
+      --pink: #f38ba8;
+    }
+
+    * {
+      box-sizing: border-box;
+      transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      width: 100%;
+      background-color: var(--base);
+      color: var(--text);
       font-family: monospace;
+    }
+
+    body {
       display: flex;
       flex-direction: column;
       align-items: center;
       padding: 40px 20px;
     }
-    h1 { color: #89b4fa; margin-bottom: 5px; }
-    p { color: #a6adc8; margin-bottom: 30px; }
+
+    .theme-bar {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .theme-btn {
+      background-color: var(--mantle);
+      color: var(--text);
+      border: 2px solid var(--surface1);
+      border-radius: 6px;
+      padding: 6px 14px;
+      font-family: monospace;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .theme-btn:hover, .theme-btn.active {
+      border-color: var(--blue);
+      background-color: var(--surface0);
+    }
+
+    h1 {
+      color: var(--blue);
+      margin: 0 0 8px 0;
+      font-size: 2rem;
+    }
+
+    p {
+      color: var(--subtext0);
+      margin: 0 0 35px 0;
+    }
+
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 20px;
       width: 100%;
-      max-width: 700px;
+      max-width: 720px;
     }
+
     a.card {
-      background: #181825;
-      border: 2px solid #45475a;
-      border-radius: 8px;
-      padding: 20px;
+      background-color: var(--mantle);
+      border: 2px solid var(--surface1);
+      border-radius: 10px;
+      padding: 22px;
       text-decoration: none;
-      color: #cdd6f4;
-      transition: border-color 0.2s;
+      color: var(--text);
+      display: block;
     }
-    a.card:hover { border-color: #89b4fa; }
-    .card h3 { color: #f38ba8; margin: 0 0 8px 0; }
-    .card span { color: #a6adc8; font-size: 0.9em; }
+
+    a.card:hover {
+      border-color: var(--blue);
+      background-color: var(--surface0);
+    }
+
+    .card h3 {
+      color: var(--pink);
+      margin: 0 0 10px 0;
+      font-size: 1.15rem;
+    }
+
+    .card span {
+      color: var(--subtext0);
+      font-size: 0.92rem;
+      line-height: 1.4;
+      display: block;
+    }
   </style>
 </head>
 <body>
+  <div class="theme-bar">
+    <button class="theme-btn active" onclick="setTheme('mocha', this)">🌿 Mocha</button>
+    <button class="theme-btn" onclick="setTheme('macchiato', this)">🌺 Macchiato</button>
+    <button class="theme-btn" onclick="setTheme('frappe', this)">🪴 Frappé</button>
+    <button class="theme-btn" onclick="setTheme('latte', this)">🌻 Latte</button>
+  </div>
+
   <h1>⚡ ElijahAmogsus</h1>
   <p>My custom tools, games & experiments</p>
 
   <div class="grid">
     <a class="card" href="/pixel-gradient/">
       <h3>👾 Pixelated Gradient Maker</h3>
-      <span>Create & download up to 5-color retro pixel gradients.</span>
+      <span>Create & download up to 5-color 1080×1080 retro pixel gradients.</span>
     </a>
 
     <a class="card" href="#">
@@ -51,5 +131,49 @@
       <span>Placeholder card for your next tool or mini-game.</span>
     </a>
   </div>
+
+  <script>
+    const themes = {
+      mocha: {
+        base: '#1e1e2e', mantle: '#181825', surface0: '#313244',
+        surface1: '#45475a', text: '#cdd6f4', subtext0: '#a6adc8',
+        blue: '#89b4fa', pink: '#f38ba8'
+      },
+      macchiato: {
+        base: '#24273a', mantle: '#1e2030', surface0: '#363a4f',
+        surface1: '#494d64', text: '#cad3f5', subtext0: '#a5adcb',
+        blue: '#8aadf4', pink: '#f5bde6'
+      },
+      frappe: {
+        base: '#303446', mantle: '#292c3c', surface0: '#414559',
+        surface1: '#51576d', text: '#c6d0f5', subtext0: '#a5adce',
+        blue: '#8caaee', pink: '#f4b8e4'
+      },
+      latte: {
+        base: '#eff1f5', mantle: '#e6e9ef', surface0: '#ccd0da',
+        surface1: '#bcc0cc', text: '#4c4f69', subtext0: '#6c6f85',
+        blue: '#1e66f5', pink: '#ea76cb'
+      }
+    };
+
+    function setTheme(name, btn) {
+      const palette = themes[name];
+      const root = document.documentElement.style;
+      for (const [key, value] of Object.entries(palette)) {
+        root.setProperty(`--${key}`, value);
+      }
+
+      document.querySelectorAll('.theme-btn').forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+      localStorage.setItem('catppuccin-theme', name);
+    }
+
+    // Load saved theme automatically
+    const saved = localStorage.getItem('catppuccin-theme');
+    if (saved && themes[saved]) {
+      const btn = document.querySelector(`button[onclick*="${saved}"]`);
+      setTheme(saved, btn);
+    }
+  </script>
 </body>
 </html>
