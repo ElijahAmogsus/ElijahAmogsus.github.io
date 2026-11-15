@@ -8,7 +8,7 @@
     :root {
       --base: #1e1e2e; --mantle: #181825; --surface0: #313244;
       --surface1: #45475a; --text: #cdd6f4; --subtext0: #a6adc8;
-      --accent: #89b4fa; --pink: #f38ba8;
+      --accent: #89b4fa;
     }
 
     * { box-sizing: border-box; transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease; }
@@ -84,7 +84,12 @@
 
     <a class="card" href="/color-picker/">
       <h3>🎨 Color Picker</h3>
-      <span>Pick any color and instantly copy HEX, RGB, and HSL codes.</span>
+      <span>Pick any color from an image or wheel and copy HEX, RGB, and HSL.</span>
+    </a>
+
+    <a class="card" href="/solid-color/">
+      <h3>⬛ Solid Color Generator</h3>
+      <span>Create & download solid color PNGs in any custom resolution.</span>
     </a>
 
     <a class="card" href="#">
@@ -130,17 +135,8 @@
       document.getElementById('accentSelect').value = currentAccent;
     }
 
-    function setTheme(name) {
-      currentTheme = name;
-      localStorage.setItem('catppuccin-theme', name);
-      applyPalette();
-    }
-
-    function setAccent(accent) {
-      currentAccent = accent;
-      localStorage.setItem('catppuccin-accent', accent);
-      applyPalette();
-    }
+    function setTheme(name) { currentTheme = name; localStorage.setItem('catppuccin-theme', name); applyPalette(); }
+    function setAccent(accent) { currentAccent = accent; localStorage.setItem('catppuccin-accent', accent); applyPalette(); }
 
     applyPalette();
   </script>
